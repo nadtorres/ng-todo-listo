@@ -1,6 +1,3 @@
-import { DatePipe } from "../../node_modules/@angular/common";
-
-
 export enum EstadoTarea{
     Creada
     , EnProceso

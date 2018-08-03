@@ -5,6 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,11 +16,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AppComponent implements OnInit{
 
   title = 'Todo Listo';
-  estadoTareas : EstadoTarea;
+  estadoTareas = EstadoTarea;
   tareaSeleccionada: Tarea;
   tareas: Array<Tarea>;
   newTarea: Tarea;
   estadosTareas: any;
+  tareasMostradas: Array<Tarea>;
   
   
   constructor(public tareaService: TareaService, private http : HttpClient){
@@ -30,12 +32,14 @@ export class AppComponent implements OnInit{
  
   ngOnInit(){
     this.tareaService.getTareas()
-    .subscribe((ts: Array<Tarea>) => { this.tareas = ts;} 
+    .subscribe((ts: Array<Tarea>) => { this.tareas = ts; this.filtrarTareas();} 
     );
 
     this.getEstados();
   }
-
+  filtrarTareas(){
+    this.tareasMostradas = this.tareas.filter(t => t.titulo);
+  }
   actualizarTarea(t: Tarea) {
   }
 
