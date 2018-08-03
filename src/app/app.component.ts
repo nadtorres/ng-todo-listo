@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
   tareas: Array<Tarea>;
   newTarea: Tarea;
   estadosTareas: any;
-  domain: string = 'http://127.0.0.1:8000';
+  
   
   constructor(public tareaService: TareaService, private http : HttpClient){
     this.tareas =[];
@@ -54,9 +54,10 @@ export class AppComponent implements OnInit{
     );
   }
   getEstados() {
-    this.http.get(`${this.domain}/estados/`).subscribe(data => {
+    this.tareaService.getEstados().subscribe(data => {
       this.estadosTareas = data;
     });
+
   }
 
   estado2str(e: EstadoTarea) {

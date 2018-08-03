@@ -29,5 +29,8 @@ export class  TareaService {
   actualizarTarea(t: Tarea): Observable<any> {
     return this.http.post<Tarea>(this.tareaUrl, t.id);
   }
+  getEstados(){
+    return this.http.get(this.estadosUrl);
+  }
 
 }
