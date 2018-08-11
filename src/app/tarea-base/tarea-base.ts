@@ -1,6 +1,7 @@
 import { Input, Output, EventEmitter } from '@angular/core';
 import { Tarea } from '../tarea';
 
+
 export abstract class TareaBase{
 
     @Input() tarea: Tarea;
@@ -10,7 +11,7 @@ export abstract class TareaBase{
 
     pasarSiguienteEstado(){
         this.tarea.estado = this.obtenerSiguienteEstado(this.tarea);
-        this.tareaActualizada.emit(this.tarea);
+        this.tareaActualizada.emit(this.tarea);       
     }
 
     abstract obtenerSiguienteEstado(t: Tarea);

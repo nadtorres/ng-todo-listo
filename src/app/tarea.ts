@@ -17,6 +17,7 @@ export class Tarea {
     fecha_inicio: Date;
     fecha_termino: Date;
     estado: EstadoTarea;
+    push: any;
 
     constructor(id, titulo, descripcion, estado = EstadoTarea.Creada)
     {
@@ -30,5 +31,5 @@ export class Tarea {
     toString(){
         return `Tarea #${this.id}: ${this.titulo}`;
     }
-
+    
 }

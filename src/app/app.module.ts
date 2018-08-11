@@ -11,6 +11,7 @@ import { TareaTerminadaComponent } from './tarea-terminada/tarea-terminada.compo
 import { AppRoutingModule } from './/app-routing.module';
 import { FilterPipe } from './filter.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { FilterPipe } from './filter.pipe';
     TareaTerminadaComponent, 
     FilterPipe
     ],
+    
   imports: [
     BrowserModule,
     UiModule,
@@ -27,7 +29,7 @@ import { FilterPipe } from './filter.pipe';
     AppRoutingModule
   ],
  
-  providers: [  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 
