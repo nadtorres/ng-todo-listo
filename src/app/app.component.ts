@@ -62,8 +62,8 @@ export class AppComponent implements OnInit{
     });
   }
 
-  deleteTarea(){
-    this.tareaService.deleteTarea(this.tareaSeleccionada).subscribe(
+  deleteTarea(t: Tarea){
+    this.tareaService.deleteTarea(t).subscribe(
       response => { ts => { this.tareaService.deleteTarea(ts);}
       },
       error => console.log('error', error)
