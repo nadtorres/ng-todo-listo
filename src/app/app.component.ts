@@ -22,7 +22,8 @@ export class AppComponent implements OnInit{
   newTarea: Tarea;
   estadosTareas: any;
   tareasMostradas: Array<Tarea>;
-  
+  tareaUrl : 'http://127.0.0.1:8000/tareas/';
+  router: any;
   
   constructor(public tareaService: TareaService, private http : HttpClient){
     this.tareas =[];
@@ -40,9 +41,7 @@ export class AppComponent implements OnInit{
   filtrarTareas(){
     this.tareasMostradas = this.tareas.filter(t => t.titulo);
   }
-  actualizarTarea(t: Tarea) {
-  }
-
+ 
   seleccionarTarea(t: Tarea){
     this.tareaSeleccionada= t;
   }
@@ -61,7 +60,16 @@ export class AppComponent implements OnInit{
     this.tareaService.getEstados().subscribe(data => {
       this.estadosTareas = data;
     });
+  }
 
+  deleteTarea(){
+    this.tareaService.deleteTarea(this.tareaSeleccionada).subscribe(
+      response => { ts => {
+        this.tareaService.deleteTarea(ts);
+      }
+      },
+      error => console.log('error', error)
+    );
   }
 
   estado2str(e: EstadoTarea) {

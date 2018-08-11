@@ -55,11 +55,11 @@
             [ngModel]="newTarea.fecha_inicio">
       </div>
 
-      <!-- <div class="form-group">
+      <div class="form-group">
           <label for="fecha_termino">Fecha Termino</label>
          <input type="date" class="form-control" id="fecha_termino" name="fecha_termino"
             [ngModel]="newTarea.fecha_termino">
-      </div> -->
+      </div>
 
         <button [disabled]="f.invalid"
           type="submit"
@@ -77,11 +77,11 @@
           [(ngModel)]="searchText">
           
       <table class="table">
-            <!-- <li *ngFor ="let t of tareasMostradas | callback filtrarTarea>"></li> -->
           <tr>
           <th>#</th>
           <th>Titulo</th>
           <th>Estado</th>
+          <th>Modificar</th>
           <th>Acciones</th>
         </tr>
         <tr *ngFor="let t of tareasMostradas | filter : searchText"
@@ -89,11 +89,25 @@
         <td>{{ t.id }}</td>
         <td>
           <a href="#"
-          (click)="seleccionarTarea(t)">
+          (click)="seleccionarTarea(t);">
           {{ t.titulo }}
           </a>
         </td>
         <td>{{ estado2str(t.estado) }}</td>
+        <td>
+            <button class="btn btn-success" 
+            (click)="update(t)" 
+            style="margin-left: 20px;"> 
+            Edit
+          </button>
+        </td>
+        <td>
+            <button class="btn btn-danger" 
+            (click)="deleteTarea(seleccionarTarea(t))" 
+            style="margin-left: 20px;"> 
+            Delete
+          </button>
+        </td>
         </tr>
       </table>
     </div>
