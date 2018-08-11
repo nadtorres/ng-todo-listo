@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
   estadosTareas: any;
   tareasMostradas: Array<Tarea>;
   tareaUrl : 'http://127.0.0.1:8000/tareas/';
-  router: any;
+    
   
   constructor(public tareaService: TareaService, private http : HttpClient){
     this.tareas =[];
@@ -64,9 +64,7 @@ export class AppComponent implements OnInit{
 
   deleteTarea(){
     this.tareaService.deleteTarea(this.tareaSeleccionada).subscribe(
-      response => { ts => {
-        this.tareaService.deleteTarea(ts);
-      }
+      response => { ts => { this.tareaService.deleteTarea(ts);}
       },
       error => console.log('error', error)
     );
